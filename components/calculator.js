@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from "react"
 import makeRequest from "../utils/makeRequest"
-import ValueInfo from "../components/valueInfo"
+import getCryptoId from "../utils/getCryptoId"
+import getCoinLogo from "../utils/getCoinLogo"
+import ValueInfo from "./valueInfo"
+import calcStyles from "../styles/Calculator.module.css"
 
 function Calculator({ coin }) {
     const coinOptions = [
@@ -10,6 +13,9 @@ function Calculator({ coin }) {
         "shiba-inu",
         "litecoin",
     ]
+
+    const [coinOptionIds, setCoinOptionIds] = useState([])
+    const [coinLogos, setCoinLogos] = useState([])
 
     let requestUrl = 
     `https://api.coingecko.com/api/v3/simple/price?ids=` + 
@@ -47,6 +53,30 @@ function Calculator({ coin }) {
 
         // update gains/losses value everytime there is a change to inputs
     }, [radio, userInvestment, initialCoinPrice, sellingCoinPrice, investmentFee, withdrawFee])
+
+    useEffect(() => {
+        // get crypto Ids
+        for(var i=0;i<coinOptions.length;i++) {
+            getCryptoId(coinOptions[i])
+            .then(value => setCoinOptionIds(
+                prevItems => [...prevItems, {
+                    id: prevItems.length,
+                    value: value
+                }]
+            ))
+        }
+
+        // use crypto Ids to get logos
+        for(var i=0;i<coinOptionIds.length;i++) {
+            getCoinLogo(coinOptionIds[i].value)
+            .then(value => setCoinLogos(
+                prevItems => [...prevItems, {
+                    id: prevItems.length,
+                    value: value
+                }]
+            ))
+        }
+    }, [])
 
     return (
         <div style={{ padding: `4.25vh 0`}}>
@@ -90,17 +120,24 @@ function Calculator({ coin }) {
                 id="withdrawFee"
                 onChange={(e) => {setwithdrawFee(e.target.value)}}
             />
-            <div>
+            <div className={calcStyles.coinOptionsContainer}>
                 {coinOptions.map(coinOption => (
-                    <div>
-                        <label>{coinOption}</label>
-                        <input 
-                            type="radio" 
-                            checked={radio === coinOption}
-                            value={coinOption}
-                            onChange={(e) => {setRadio(e.target.value)}}
-                        />
+                    <div className={calcStyles.radioContainer}>
+                        <label>
+                            <input 
+                                type="radio" 
+                                checked={radio === coinOption}
+                                value={coinOption}
+                                onChange={(e) => {setRadio(e.target.value)}}
+                            />
+                            <span>{coinOption}</span>   
+                        </label>
                     </div>
+                ))}
+            </div>
+            <div>
+                {coinLogos && coinLogos.map(logo => (
+                    <img src={logo.value} />
                 ))}
             </div>
             <div>

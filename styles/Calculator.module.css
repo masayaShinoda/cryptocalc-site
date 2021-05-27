@@ -1,0 +1,46 @@
+.coinOptionsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 2.5vmax 0;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.coinOptionsContainer .radioContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.coinOptionsContainer .radioContainer label {
+  cursor: pointer;
+  padding: .5rem 0;
+}
+
+.coinOptionsContainer .radioContainer label::first-letter {
+  text-transform: capitalize;
+}
+
+.coinOptionsContainer .radioContainer input[type=radio] {
+  opacity: 0;
+  display: none;
+  margin: 0;
+  outline: none;
+}
+
+.coinOptionsContainer .radioContainer input[type="radio"]:checked + span {
+  background-color: #A45C40;
+  color: #fcfcfc;
+}
+
+.coinOptionsContainer .radioContainer span {
+  background: #ececec;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 1.1rem;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=Calculator.module.css.map */
