@@ -1,0 +1,22 @@
+.logo {
+    max-width: 15vmax;
+    cursor: pointer;
+}
+@media (max-width: 480px) {
+    .logo {max-width: 40vw;}
+}
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 5vw;
+    // border: 1px solid red; //debug
+    nav {
+        a {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin: 0 1.75vmin;
+        }
+    }
+}
