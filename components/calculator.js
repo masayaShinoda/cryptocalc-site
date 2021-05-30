@@ -15,7 +15,6 @@ function Calculator({ coin }) {
     ]
 
     const [coinOptionIds, setCoinOptionIds] = useState([])
-    const [coinLogos, setCoinLogos] = useState([])
 
     let requestUrl = 
     `https://api.coingecko.com/api/v3/simple/price?ids=` + 
@@ -27,8 +26,8 @@ function Calculator({ coin }) {
     const [userInvestmentCoinCurrency, setUserInvestmentCoinCurrency] = useState(0)
     const [initialCoinPrice, setinitialCoinPrice] = useState(0) // in USD
     const [sellingCoinPrice, setSellingCoinPrice] = useState(0) // in USD
-    const [investmentFee, setInvestmentFee] = useState(0)
-    const [withdrawFee, setwithdrawFee] = useState(0)
+    // const [investmentFee, setInvestmentFee] = useState(0)
+    // const [withdrawFee, setwithdrawFee] = useState(0)
     const [gainOrLoss, setGainOrLoss] = useState(0)
     const [totalReturn, setTotalReturn] = useState(0)
     
@@ -40,7 +39,16 @@ function Calculator({ coin }) {
         // btc/usd conversion
         
         setUserInvestmentCoinCurrency(userInvestment * exchangeRate)
+
+        // get crypto Ids
+        coinOptions.forEach(coinOption => {
+            getCryptoId(coinOption)
+            .then(value => setCoinOptionIds(
+                coinOptions => [...coinOptions, value]
+            ))
+        })
     }, [])
+
     useEffect(() => {
         makeRequest(requestUrl).then(value => {setinitialCoinPrice(value[radio]["usd"])})
     }, [radio])
@@ -52,39 +60,15 @@ function Calculator({ coin }) {
         setTotalReturn((userInvestment * ratioGainLoss))
 
         // update gains/losses value everytime there is a change to inputs
-    }, [radio, userInvestment, initialCoinPrice, sellingCoinPrice, investmentFee, withdrawFee])
-
-    useEffect(() => {
-        // get crypto Ids
-        for(var i=0;i<coinOptions.length;i++) {
-            getCryptoId(coinOptions[i])
-            .then(value => setCoinOptionIds(
-                prevItems => [...prevItems, {
-                    id: prevItems.length,
-                    value: value
-                }]
-            ))
-        }
-
-        // use crypto Ids to get logos
-        for(var i=0;i<coinOptionIds.length;i++) {
-            getCoinLogo(coinOptionIds[i].value)
-            .then(value => setCoinLogos(
-                prevItems => [...prevItems, {
-                    id: prevItems.length,
-                    value: value
-                }]
-            ))
-        }
-    }, [])
-
+    }, [radio, userInvestment, initialCoinPrice, sellingCoinPrice])
+    
     return (
         <div style={{ padding: `4.25vh 0`}}>
             <ValueInfo coin={radio} coinOptions={coinOptions} />
             <label htmlFor="userInvestment">Investment (USD)</label>
             <input 
-                type="number" 
-                value={userInvestment} 
+                type="number"
+                value={userInvestment}
                 id="userInvestment"
                 onChange={(e) => {setUserInvestment(e.target.value)}}
             />
@@ -106,20 +90,6 @@ function Calculator({ coin }) {
                 onChange={(e) => {setSellingCoinPrice(e.target.value)}}
             />
             <br />
-            <label htmlFor="investmentFee">Investment Fee (USD)</label>
-            <input 
-                type="number" 
-                value={investmentFee}
-                id="investmentFee"
-                onChange={(e) => {setInvestmentFee(e.target.value)}}
-            />
-            <label htmlFor="withdrawFee">Withdraw Fee (USD)</label>
-            <input 
-                type="number" 
-                value={withdrawFee} 
-                id="withdrawFee"
-                onChange={(e) => {setwithdrawFee(e.target.value)}}
-            />
             <div className={calcStyles.coinOptionsContainer}>
                 {coinOptions.map(coinOption => (
                     <div className={calcStyles.radioContainer}>
@@ -133,11 +103,6 @@ function Calculator({ coin }) {
                             <span>{coinOption}</span>   
                         </label>
                     </div>
-                ))}
-            </div>
-            <div>
-                {coinLogos && coinLogos.map(logo => (
-                    <img src={logo.value} />
                 ))}
             </div>
             <div>

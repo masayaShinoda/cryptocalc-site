@@ -7,12 +7,18 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .coinOptionsContainer .radioContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  margin: 1.1rem 0;
 }
 
 .coinOptionsContainer .radioContainer label {
