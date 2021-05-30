@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5vmin 0;
+    ul {
+        list-style-type: none;
+        padding: 3.25vmax 0;
+        li {
+            display: flex;
+            flex-direction: column;
+        }
+        li.value {
+            // margin: 2.5vmax 0;
+            // padding: 2.5vmax 0;
+            // border: 1px solid red; //debug
+            p {
+                font-size: 2.8rem;
+                font-weight: 700;
+                padding: .5rem 0;
+            }
+        }
+        li.lastUpdated {
+            flex-direction: row;
+            font-size: .9rem;
+            span {font-style: italic;}
+            p {margin: 0 .25rem}
+        }
+    }
+}
+
+.header::first-letter {
+    text-transform: capitalize;
+}

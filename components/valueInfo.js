@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import makeRequest from "../utils/makeRequest"
 import dateFormat from "../utils/dateFormat"
+import valueInfoStyles from "../styles/valueInfo.module.css"
 
 export default function valueInfo({ coin, coinOptions }) {
     console.log(coin)
@@ -25,16 +26,16 @@ export default function valueInfo({ coin, coinOptions }) {
     }, [])
 
     return (
-        <div>
-            <h2>{coin}</h2>
+        <div className={valueInfoStyles.container}>
+            <h2 className={valueInfoStyles.header}>{coin}</h2>
             {apiData ? 
                 (<ul>
-                    <li key="USD value">
-                        <p>USD value:</p>
+                    <li key="USD value" className={valueInfoStyles.value}>
+                        <span>USD value <small>(one coin)</small></span>
                         <p id="coin-usd-value">${apiData[coin]["usd"]}</p>
                     </li>
-                    <li key="Last updated">
-                        <p>Last updated:</p>
+                    <li key="Last updated" className={valueInfoStyles.lastUpdated}>
+                        <span>Last updated:</span>
                         <p>{dateFormat(apiData[coin]["last_updated_at"])}</p>
                     </li>
                 </ul>)

@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from "react"
 import makeRequest from "../utils/makeRequest"
 import getCryptoId from "../utils/getCryptoId"
-import getCoinLogo from "../utils/getCoinLogo"
+// import getCoinLogo from "../utils/getCoinLogo"
 import ValueInfo from "./valueInfo"
 import calcStyles from "../styles/Calculator.module.css"
 
 function Calculator({ coin }) {
     const coinOptions = [
         "bitcoin",
-        "dogecoin",
         "ethereum",
+        "dogecoin",
         "shiba-inu",
         "litecoin",
     ]
+    const coinLogos = []
 
     const [coinOptionIds, setCoinOptionIds] = useState([])
 
@@ -63,17 +64,17 @@ function Calculator({ coin }) {
     }, [radio, userInvestment, initialCoinPrice, sellingCoinPrice])
     
     return (
-        <div style={{ padding: `4.25vh 0`}}>
+        <div className={calcStyles.calcContainer}>
             <ValueInfo coin={radio} coinOptions={coinOptions} />
             <label htmlFor="userInvestment">Investment (USD)</label>
-            <input 
+            <input
                 type="number"
                 value={userInvestment}
                 id="userInvestment"
                 onChange={(e) => {setUserInvestment(e.target.value)}}
             />
             {userInvestmentCoinCurrency && 
-                <p>{userInvestmentCoinCurrency} {radio}(s)</p>}
+                <p className={calcStyles.valueConvertedToCoin}>{userInvestmentCoinCurrency} {radio}(s)</p>}
             <br />
             <label htmlFor="initialCoinPrice">Initial Coin Price (USD)</label>
             <input 
@@ -105,16 +106,20 @@ function Calculator({ coin }) {
                     </div>
                 ))}
             </div>
-            <div>
+            <div className={calcStyles.gainsLossesContainer}>
                 {/* profit or loss = (sellingCoinPrice - initialCoinPrice)/100 * initial investment */}
-                <h2>Gains/losses: </h2>
-                {gainOrLoss &&
-                    (<h1>${gainOrLoss}</h1>)
-                }
-                <h3>Total: </h3>
-                {totalReturn &&
-                    (<p>${totalReturn}</p>)
-                }
+                <div>
+                    <h2>Gains/losses: </h2>
+                    {gainOrLoss &&
+                        (<h1 className={calcStyles.gainsLosses}>${gainOrLoss}</h1>)
+                    }
+                </div>
+                <div>
+                    <h2>Total: </h2>
+                    {totalReturn &&
+                        (<p className={calcStyles.totalReturns}>${totalReturn}</p>)
+                    }
+                </div>
             </div>
         </div>
     )

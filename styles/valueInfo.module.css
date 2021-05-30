@@ -1,0 +1,52 @@
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2.5vmin 0;
+}
+
+.container ul {
+  list-style-type: none;
+  padding: 3.25vmax 0;
+}
+
+.container ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container ul li.value p {
+  font-size: 2.8rem;
+  font-weight: 700;
+  padding: .5rem 0;
+}
+
+.container ul li.lastUpdated {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: .9rem;
+}
+
+.container ul li.lastUpdated span {
+  font-style: italic;
+}
+
+.container ul li.lastUpdated p {
+  margin: 0 .25rem;
+}
+
+.header::first-letter {
+  text-transform: capitalize;
+}
+/*# sourceMappingURL=valueInfo.module.css.map */
