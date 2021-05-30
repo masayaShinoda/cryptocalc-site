@@ -13,7 +13,13 @@ function Calculator({ coin }) {
         "shiba-inu",
         "litecoin",
     ]
-    const coinLogos = []
+    const coinLogos = {
+        "bitcoin": "https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=010",
+        "ethereum": "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=010",
+        "dogecoin": "https://cryptologos.cc/logos/dogecoin-doge-logo.svg?v=010",
+        "shiba-inu": "https://upload.wikimedia.org/wikipedia/en/5/53/Shiba_Inu_coin_logo.png",
+        "litecoin": "https://cryptologos.cc/logos/litecoin-ltc-logo.svg?v=010"
+    }
 
     const [coinOptionIds, setCoinOptionIds] = useState([])
 
@@ -108,7 +114,11 @@ function Calculator({ coin }) {
                                 value={coinOption}
                                 onChange={(e) => {setRadio(e.target.value)}}
                             />
-                            <span>{coinOption}</span>   
+                            <span>
+                                {coinLogos[coinOption] ? <img src={coinLogos[coinOption]} alt={coinOption} /> : null}
+                                
+                                <p>{coinOption}</p>
+                            </span>   
                         </label>
                     </div>
                 ))}
