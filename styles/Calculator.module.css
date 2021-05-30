@@ -6,19 +6,70 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
+}
+
+.calcContainer .upperDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.calcContainer .upperDiv .inputsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 2.5vmax;
+  margin-left: 4.25vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (max-width: 1023px) {
+  .calcContainer .upperDiv {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .calcContainer .upperDiv .inputsContainer {
+    margin: 0;
+    padding: 2.5vmax 0;
+  }
 }
 
 .calcContainer label {
-  margin: 0.8rem 0;
-  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
 }
 
 .calcContainer input {
-  font-size: 1.25rem;
-  padding: 1.75vmax 1.25vmax;
+  font-size: 1.1rem;
+  padding: .8vmax 1.125vmax;
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
+  border-radius: 4px;
+  border: #999 2px solid;
+  outline: 0;
+}
+
+.calcContainer input:focus {
+  border: #A45C40 2px solid;
+}
+
+@media (max-width: 1023px) {
+  .calcContainer input {
+    max-width: 80%;
+  }
 }
 
 .calcContainer .valueConvertedToCoin {
@@ -33,7 +84,7 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  padding: 4.25vmax 0;
+  padding: 2.5vmax 0;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -86,10 +137,11 @@
           flex-direction: column;
   padding: 2.5vmax 0;
   width: 100%;
+  max-width: 100%;
 }
 
 .gainsLossesContainer div {
-  padding: 2.5vmax 0;
+  padding: 1.25vmin 0;
 }
 
 .gainsLossesContainer div:first-of-type {

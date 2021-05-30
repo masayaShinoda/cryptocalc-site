@@ -65,32 +65,39 @@ function Calculator({ coin }) {
     
     return (
         <div className={calcStyles.calcContainer}>
-            <ValueInfo coin={radio} coinOptions={coinOptions} />
-            <label htmlFor="userInvestment">Investment (USD)</label>
-            <input
-                type="number"
-                value={userInvestment}
-                id="userInvestment"
-                onChange={(e) => {setUserInvestment(e.target.value)}}
-            />
-            {userInvestmentCoinCurrency && 
-                <p className={calcStyles.valueConvertedToCoin}>{userInvestmentCoinCurrency} {radio}(s)</p>}
-            <br />
-            <label htmlFor="initialCoinPrice">Initial Coin Price (USD)</label>
-            <input 
-                type="number" 
-                value={initialCoinPrice} 
-                id="initialCoinPrice"
-                onChange={(e) => {setinitialCoinPrice(e.target.value)}}
-            />
-            <label htmlFor="sellingCoinPrice">Selling Coin Price (USD)</label>
-            <input 
-                type="number" 
-                value={sellingCoinPrice} 
-                id="sellingCoinPrice"
-                onChange={(e) => {setSellingCoinPrice(e.target.value)}}
-            />
-            <br />
+            <div className={calcStyles.upperDiv}>
+                <ValueInfo coin={radio} coinOptions={coinOptions} />
+                <div className={calcStyles.inputsContainer}>
+                    <label htmlFor="userInvestment">Investment (USD)</label>
+                    <input
+                        type="number"
+                        value={userInvestment}
+                        id="userInvestment"
+                        onChange={(e) => {setUserInvestment(e.target.value)}}
+                    />
+                    {userInvestmentCoinCurrency ? 
+                        <p className={calcStyles.valueConvertedToCoin}>
+                            {userInvestmentCoinCurrency} {radio}(s)
+                        </p> : null}
+                    <br />
+                    <label htmlFor="initialCoinPrice">Initial Coin Price (USD)</label>
+                    <input 
+                        type="number" 
+                        value={initialCoinPrice} 
+                        id="initialCoinPrice"
+                        onChange={(e) => {setinitialCoinPrice(e.target.value)}}
+                    />
+                    <label htmlFor="sellingCoinPrice">Selling Coin Price (USD)</label>
+                    <input 
+                        type="number" 
+                        value={sellingCoinPrice} 
+                        id="sellingCoinPrice"
+                        onChange={(e) => {setSellingCoinPrice(e.target.value)}}
+                    />
+                    <br />
+
+                </div>
+            </div>
             <div className={calcStyles.coinOptionsContainer}>
                 {coinOptions.map(coinOption => (
                     <div className={calcStyles.radioContainer}>

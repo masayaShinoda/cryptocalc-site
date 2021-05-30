@@ -12,15 +12,8 @@ export default function Home() {
   return (
     <Layout pageName="Calculator">
       {/* {CoinSelector} */}
-      <div style={{
-        display: `flex`,
-        flexWrap: `wrap`, 
-        justifyContent: `space-evenly`, 
-        width: `90vw`,
-        padding: `4.25vh 0`
-      }}>
+
         <Calculator />
-      </div>
     </Layout>
   )
 }

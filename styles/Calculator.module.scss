@@ -5,14 +5,43 @@ $radioMarginPadding: .5rem 1.1rem;
 .calcContainer {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    .upperDiv {
+        display: flex;
+        justify-content: space-between;
+        .inputsContainer {
+            display: flex;
+            padding: 0 2.5vmax;
+            margin-left: 4.25vw;
+            flex-direction: column;
+        }
+    }
+    @media (max-width: $tablet-bp) {
+        .calcContainer {
+            
+        }
+        .upperDiv {
+            flex-direction: column; justify-content: flex-start;
+            .inputsContainer {margin: 0; padding: 2.5vmax 0;}
+        }
+    }
     label {
-        margin: 0.8rem 0;
-        font-size: 1.25rem;
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
     }
     input {
-        font-size: 1.25rem;
-        padding: 1.75vmax 1.25vmax;
+        font-size: 1.1rem;
+        padding: .8vmax 1.125vmax;
         max-width: fit-content;
+        border-radius: 4px;
+        border: #999 2px solid;
+        outline: 0;
+    }
+    input:focus {
+        border: $primary-clr 2px solid;
+    }
+    @media (max-width: $tablet-bp) {
+        input {max-width: 80%;}
     }
     .valueConvertedToCoin {
         font-size: .9rem;
@@ -25,7 +54,7 @@ $radioMarginPadding: .5rem 1.1rem;
 .coinOptionsContainer {
     display: flex;
     width: 100%;
-    padding: 4.25vmax 0;
+    padding: 2.5vmax 0;
     flex-wrap: wrap;
     .radioContainer {
         display: flex;
@@ -64,7 +93,8 @@ $radioMarginPadding: .5rem 1.1rem;
     flex-direction: column;
     padding: 2.5vmax 0;
     width: 100%;
-    div {padding: 2.5vmax 0}
+    max-width: 100%;
+    div {padding: 1.25vmin 0}
     div:first-of-type {margin-right: 4.25vw}
     .gainsLosses {
         font-size: 2.8rem;
@@ -77,3 +107,4 @@ $radioMarginPadding: .5rem 1.1rem;
            
     }
 }
+

@@ -31,7 +31,7 @@ export default function valueInfo({ coin, coinOptions }) {
             {apiData ? 
                 (<ul>
                     <li key="USD value" className={valueInfoStyles.value}>
-                        <span>USD value <small>(one coin)</small></span>
+                        <span>USD value: <small>(one coin)</small></span>
                         <p id="coin-usd-value">${apiData[coin]["usd"]}</p>
                     </li>
                     <li key="Last updated" className={valueInfoStyles.lastUpdated}>

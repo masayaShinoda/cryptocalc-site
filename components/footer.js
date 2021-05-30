@@ -4,7 +4,7 @@ export default function Footer() {
         <div style={{
             display: `flex`,
             bottom: 0, width: `100%`,
-            padding: `2.5vmin 5vw`,
+            padding: `2.5vmin 0`,
         }}
         >
             <span>
