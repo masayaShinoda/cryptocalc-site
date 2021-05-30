@@ -23,9 +23,12 @@ $inputWidthDesktop: 22.5vmax;
             
         }
         .upperDiv {
-            flex-direction: column; justify-content: flex-start;
+            justify-content: space-evenly;
             .inputsContainer {margin: 0; padding: 2.5vmax 0;}
         }
+    }
+    @media (max-width: $mobile-bp) {
+        .upperDiv {flex-direction: column;}
     }
     label {
         margin: 0.5rem 0;
@@ -45,8 +48,8 @@ $inputWidthDesktop: 22.5vmax;
     }
     @media (max-width: $tablet-bp) {
         input {
-            min-width: 80%;
-            max-width: 80%;
+            min-width: 100%;
+            max-width: 100%;
         }
     }
     .valueConvertedToCoin {
@@ -102,6 +105,7 @@ $inputWidthDesktop: 22.5vmax;
             p {
                 word-break: keep-all;
             }
+            p:first-letter {text-transform: uppercase;}
         }
     }
     

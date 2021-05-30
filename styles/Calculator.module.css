@@ -33,17 +33,22 @@
 
 @media (max-width: 1023px) {
   .calcContainer .upperDiv {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
   .calcContainer .upperDiv .inputsContainer {
     margin: 0;
     padding: 2.5vmax 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .calcContainer .upperDiv {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
@@ -68,8 +73,8 @@
 
 @media (max-width: 1023px) {
   .calcContainer input {
-    min-width: 80%;
-    max-width: 80%;
+    min-width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -147,6 +152,10 @@
 
 .coinOptionsContainer .radioContainer span p {
   word-break: keep-all;
+}
+
+.coinOptionsContainer .radioContainer span p:first-letter {
+  text-transform: uppercase;
 }
 
 .gainsLossesContainer {
