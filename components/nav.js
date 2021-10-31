@@ -8,7 +8,7 @@ export default function Nav() {
                 <img src="/crypto-calc-04.png" className={styles.logo} />
             </Link>
             <nav>
-                <Link href="/">About</Link>
+                <Link href="https://github.com/masayaShinoda/cryptocalc-site">GitHub</Link>
             </nav>
         </div>
     )
